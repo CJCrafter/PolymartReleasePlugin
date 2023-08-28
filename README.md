@@ -16,7 +16,7 @@ Add the following code to your `build.gradle` (Groovy) or `build.gradle.kts` (Ko
 
 ```groovy
 plugins {
-    id 'com.cjcrafter.polymart-release' version '1.0.0'
+    id 'com.cjcrafter.polymart-release' version '1.0.1'
 }
 ```
 
@@ -24,7 +24,7 @@ plugins {
 
 ```kotlin
 plugins {
-    id("com.cjcrafter.polymart-release") version "1.0.0"
+    id("com.cjcrafter.polymart-release") version "1.0.1"
 }
 ```
 
