@@ -14,7 +14,7 @@ dependencies {
     implementation("com.squareup.okhttp3:okhttp:4.9.1")
 }
 
-version = "1.0.0"
+version = "1.0.1"
 group = "com.cjcrafter"
 
 gradlePlugin {

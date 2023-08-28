@@ -5,6 +5,7 @@ import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody.Companion.asRequestBody
 import org.gradle.api.file.RegularFileProperty
 import org.gradle.api.tasks.Input
+import org.gradle.api.tasks.InputFile
 import org.gradle.api.tasks.Optional
 import org.gradle.api.tasks.OutputFile
 import org.gradle.api.tasks.TaskAction
@@ -12,23 +13,23 @@ import java.io.IOException
 
 open class PolymartReleaseTask : org.gradle.api.DefaultTask() {
 
-    @get:Input
+    @Input
     var apiKey: String? = null
 
-    @get:Input
+    @Input
     var resourceId: String? = null
 
-    @get:Input
+    @Input
     var version: String? = null
 
-    @get:Input
+    @Input
     var title: String? = null
 
-    @get:Input
+    @Input
     var message: String? = null
 
-    @get:OutputFile
-    var file: RegularFileProperty? = null
+    @InputFile
+    val file: RegularFileProperty = project.objects.fileProperty()
 
     @Input
     @Optional
@@ -39,15 +40,16 @@ open class PolymartReleaseTask : org.gradle.api.DefaultTask() {
     var snapshot: Boolean? = null
 
     init {
-        val extension = project.extensions.findByType(PolymartReleaseExtension::class.java)
-        apiKey = extension?.apiKey
-        resourceId = extension?.resourceId?.toString()
-        version = extension?.version
-        title = extension?.title
-        message = extension?.message
-        file = extension?.file
-        beta = extension?.beta
-        snapshot = extension?.snapshot
+        project.extensions.findByType(PolymartReleaseExtension::class.java)?.let { extension ->
+            apiKey = extension.apiKey
+            resourceId = extension.resourceId?.toString()
+            version = extension.version
+            title = extension.title
+            message = extension.message
+            file.set(extension.file)
+            beta = extension.beta
+            snapshot = extension.snapshot
+        }
     }
 
     @TaskAction
