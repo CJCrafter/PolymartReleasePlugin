@@ -1,6 +1,6 @@
 # Polymart Release Gradle Plugin
 
-A Gradle plugin for automating releases to Polymart.
+A Gradle plugin for automating releases to Polymart. [Check it out on the gradle plugin portal](https://plugins.gradle.org/plugin/com.cjcrafter.polymart-release).
 
 ## Features
 
